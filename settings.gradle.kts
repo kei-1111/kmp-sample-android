@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "kmp-sample-android"
 include(":app")
+
+include(":feature:home")
  
