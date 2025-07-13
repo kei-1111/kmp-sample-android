@@ -19,6 +19,8 @@ dependencyResolutionManagement {
     }
 }
 
+includeBuild("libs/kmp-sample-library")
+
 rootProject.name = "kmp-sample-android"
 include(":app")
 
