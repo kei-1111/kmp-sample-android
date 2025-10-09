@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.kei_1111.kmp_sample_library.feature.home.HomeAction
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeViewModel
 import org.koin.compose.viewmodel.koinViewModel
@@ -17,8 +18,21 @@ fun HomeScreen() {
     val viewModel: HomeViewModel = koinViewModel<HomeViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
+    HomeScreen(
+        state = state,
+        onAction = viewModel::onAction,
+        modifier = Modifier.fillMaxSize()
+    )
+}
+
+@Composable
+private fun HomeScreen(
+    state: HomeState,
+    onAction: (HomeAction) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
         when (state) {
@@ -35,7 +49,7 @@ fun HomeScreen() {
             }
 
             is HomeState.Success -> {
-                val data = (state as HomeState.Success).properties.joinToString(separator = "\n")
+                val data = state.marsProperties.joinToString(separator = "\n")
                 Text(text = "Data: $data")
             }
         }
