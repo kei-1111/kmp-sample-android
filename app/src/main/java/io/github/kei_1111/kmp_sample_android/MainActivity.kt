@@ -5,21 +5,20 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.kei_1111.kmp_sample_android.feature.home.HomeScreen
-import io.github.kei_1111.kmp_sample_android.ui.theme.KmpsampleandroidTheme
+import io.github.kei_1111.kmp_sample_android.ui.theme.KmpSampleAndroidTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            KmpsampleandroidTheme {
+            KmpSampleAndroidTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
                     HomeScreen()
                 }
@@ -39,7 +38,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    KmpsampleandroidTheme {
+    KmpSampleAndroidTheme {
         Greeting("Android")
     }
 }
