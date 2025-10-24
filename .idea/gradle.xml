@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/libs/kmp-sample-library" name="kmp-sample-library">
+                <projects>
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/core" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/core/domain" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/core/featurebase" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/core/model" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/core/network" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/data" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/feature" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/feature/home" />
+                  <project path="$PROJECT_DIR$/libs/kmp-sample-library/shared" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/core" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/core/domain" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/core/featurebase" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/core/model" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/core/network" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/data" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/feature" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/feature/home" />
+            <option value="$PROJECT_DIR$/libs/kmp-sample-library/shared" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
