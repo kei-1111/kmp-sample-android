@@ -2,6 +2,7 @@ package io.github.kei_1111.kmp_sample_android.feature.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,26 +32,33 @@ private fun HomeScreen(
     onAction: (HomeAction) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Box(
+    Scaffold(
         modifier = modifier,
-        contentAlignment = Alignment.Center
-    ) {
-        when (state) {
-            is HomeState.Init -> {
-                Text(text = "Welcome to Home Screen")
-            }
+    ) { _ ->
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            when (state) {
+                is HomeState.Init -> {
+                    Text(text = "Welcome to Home Screen",)
+                }
 
-            is HomeState.Loading -> {
-                Text(text = "Loading...")
-            }
+                is HomeState.Loading -> {
+                    Text(text = "Loading...")
+                }
 
-            is HomeState.Error -> {
-                Text(text = "Error")
-            }
+                is HomeState.Error -> {
+                    Text(text = "Error")
+                }
 
-            is HomeState.Success -> {
-                val data = state.marsProperties.joinToString(separator = "\n")
-                Text(text = "Data: $data")
+                is HomeState.Success -> {
+                    HomeScreenContent(
+                        state = state,
+                        onAction = onAction,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
             }
         }
     }
