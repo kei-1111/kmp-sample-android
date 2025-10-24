@@ -13,7 +13,7 @@ kotlin = "2.2.0"
 junitVersion = "1.2.1"
 lifecycleRuntimeKtx = "2.9.1"
 
-coil = "3.3.0"
+coil = "3.2.0"
 
 koin = "4.1.0"
 
