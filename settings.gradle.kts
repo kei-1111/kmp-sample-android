@@ -24,5 +24,7 @@ includeBuild("libs/kmp-sample-library")
 rootProject.name = "kmp-sample-android"
 include(":app")
 
+include(":core:designsystem")
+
 include(":feature:home")
  
