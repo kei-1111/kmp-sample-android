@@ -23,7 +23,7 @@ import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
 
 @Composable
 fun HomeScreenContent(
-    state: HomeState.Success,
+    state: HomeState.Stable,
     onAction: (HomeAction) -> Unit,
     modifier: Modifier = Modifier,
 ) {

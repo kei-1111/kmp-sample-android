@@ -66,7 +66,7 @@ private fun HomeScreen(
                     Text(text = "Error")
                 }
 
-                is HomeState.Success -> {
+                is HomeState.Stable -> {
                     HomeScreenContent(
                         state = state,
                         onAction = onAction,
