@@ -43,9 +43,8 @@ fun MarsPropertyCard(
                     .padding(horizontal = 16.dp)
                     .padding(vertical = 8.dp),
             ) {
-                val formattedPrice = NumberFormat.getCurrencyInstance(Locale.US).format(marsProperty.price)
                 Text(
-                    text = formattedPrice,
+                    text = NumberFormat.getCurrencyInstance(Locale.US).format(marsProperty.price),
                     color = MaterialTheme.colorScheme.onSurface,
                     style = MaterialTheme.typography.labelLarge,
                 )
