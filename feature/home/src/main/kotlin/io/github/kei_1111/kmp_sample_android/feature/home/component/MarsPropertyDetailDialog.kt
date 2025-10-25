@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import coil3.compose.AsyncImage
+import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
 import io.github.kei_1111.kmp_sample_library.core.model.MarsProperty
 import io.github.kei_1111.kmp_sample_library.core.model.PropertyType
 import java.text.NumberFormat
@@ -92,13 +93,15 @@ fun MarsPropertyDetailDialog(
 @Composable
 @Preview
 private fun MarsPropertyDetailDialogPreview() {
-    MarsPropertyDetailDialog(
-        marsProperty = MarsProperty(
-            id = "424905",
-            imgSrc = "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03900/opgs/edr/fcam/FLB_645486870EDR_F0481570FHAZ00323M_.JPG",
-            price = 450000,
-            type = PropertyType.RENT,
-        ),
-        onDismiss = {}
-    )
+    KmpSampleAndroidTheme {
+        MarsPropertyDetailDialog(
+            marsProperty = MarsProperty(
+                id = "424905",
+                price = 450000,
+                type = PropertyType.RENT,
+                imgSrc = "",
+            ),
+            onDismiss = {}
+        )
+    }
 }

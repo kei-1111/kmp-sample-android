@@ -10,9 +10,15 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
 import io.github.kei_1111.kmp_sample_android.feature.home.component.MarsPropertyCard
 import io.github.kei_1111.kmp_sample_android.feature.home.component.MarsPropertyDetailDialog
+import io.github.kei_1111.kmp_sample_library.core.model.MarsProperty
+import io.github.kei_1111.kmp_sample_library.core.model.PropertyType
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeAction
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
 
@@ -47,6 +53,49 @@ fun HomeScreenContent(
         MarsPropertyDetailDialog(
             marsProperty = state.selectedProperty!!,
             onDismiss = { onAction(HomeAction.OnDismissMarsPropertyDetailDialog) },
+        )
+    }
+}
+
+private data class HomeScreenContentPreviewParameter(
+    val selectedProperty: MarsProperty?
+)
+
+private class HomeScreenContentPPP : CollectionPreviewParameterProvider<HomeScreenContentPreviewParameter> (
+    collection = listOf(
+        HomeScreenContentPreviewParameter(
+            selectedProperty = null,
+        ),
+        HomeScreenContentPreviewParameter(
+            selectedProperty = MarsProperty(
+                id = "49005",
+                type = PropertyType.RENT,
+                price = 250000,
+                imgSrc = "",
+            )
+        )
+    )
+)
+
+@Composable
+@Preview
+private fun HomeScreenContentPreview(
+    @PreviewParameter(HomeScreenContentPPP::class) parameter: HomeScreenContentPreviewParameter
+) {
+    KmpSampleAndroidTheme {
+        HomeScreenContent(
+            state = HomeState.Stable(
+                marsProperties = List(10) { index ->
+                    MarsProperty(
+                        id = index.toString(),
+                        price = 1000 * (index + 1),
+                        type = if (index % 2 == 0) PropertyType.RENT else PropertyType.BUY,
+                        imgSrc = "",
+                    )
+                },
+                selectedProperty = parameter.selectedProperty,
+            ),
+            onAction = {},
         )
     }
 }

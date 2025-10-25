@@ -1,5 +1,6 @@
 package io.github.kei_1111.kmp_sample_android.feature.home.component
 
+import android.R.attr.contentDescription
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -21,14 +22,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
 import io.github.kei_1111.kmp_sample_library.core.model.MarsProperty
 import io.github.kei_1111.kmp_sample_library.core.model.PropertyType
 import java.text.NumberFormat
 import java.util.Locale
+import io.github.kei_1111.kmp_sample_android.feature.home.R
 
 @Composable
 fun MarsPropertyCard(
@@ -36,6 +41,8 @@ fun MarsPropertyCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val isPreview = LocalInspectionMode.current
+
     Card(
         modifier = modifier.wrapContentSize(),
     ) {
@@ -96,14 +103,16 @@ fun MarsPropertyCard(
 @Composable
 @Preview
 private fun MarsPropertyCardPreview() {
-    MarsPropertyCard(
-        marsProperty = MarsProperty(
-            id = "424905",
-            imgSrc = "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03900/opgs/edr/fcam/FLB_645486870EDR_F0481570FHAZ00323M_.JPG",
-            price = 450000,
-            type = PropertyType.RENT,
-        ),
-        onClick = {},
-        modifier = Modifier.width(150.dp)
-    )
+    KmpSampleAndroidTheme {
+        MarsPropertyCard(
+            marsProperty = MarsProperty(
+                id = "424905",
+                price = 450000,
+                type = PropertyType.RENT,
+                imgSrc = "",
+            ),
+            onClick = {},
+            modifier = Modifier.width(150.dp)
+        )
+    }
 }

@@ -12,8 +12,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
 import io.github.kei_1111.kmp_sample_android.feature.home.component.HomeTopBar
+import io.github.kei_1111.kmp_sample_library.core.model.MarsProperty
+import io.github.kei_1111.kmp_sample_library.core.model.PropertyType
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeAction
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeViewModel
@@ -74,5 +80,52 @@ private fun HomeScreen(
                 }
             }
         }
+    }
+}
+
+private data class HomeScreenPreviewParameter(
+    val state: HomeState,
+)
+
+private class HomeScreenPPP : CollectionPreviewParameterProvider<HomeScreenPreviewParameter> (
+    collection = listOf(
+        HomeScreenPreviewParameter(
+            state = HomeState.Init
+        ),
+        HomeScreenPreviewParameter(
+            state = HomeState.Loading
+        ),
+        HomeScreenPreviewParameter(
+            state = HomeState.Error(
+                message = "Unknown Error"
+            )
+        ),
+        HomeScreenPreviewParameter(
+            state = HomeState.Stable(
+                marsProperties = List(10) { index ->
+                    MarsProperty(
+                        id = index.toString(),
+                        price = 1000 * (index + 1),
+                        type = if (index % 2 == 0) PropertyType.RENT else PropertyType.BUY,
+                        imgSrc = "",
+                    )
+                },
+                selectedProperty = null,
+            ),
+        )
+    )
+)
+
+@Composable
+@Preview
+private fun HomeScreenPreview(
+    @PreviewParameter(HomeScreenPPP::class) parameter: HomeScreenPreviewParameter
+) {
+    KmpSampleAndroidTheme {
+        HomeScreen(
+            state = parameter.state,
+            onAction = {},
+            modifier = Modifier.fillMaxSize()
+        )
     }
 }
