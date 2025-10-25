@@ -107,7 +107,7 @@ private class HomeScreenPPP : CollectionPreviewParameterProvider<HomeScreenPrevi
                         id = index.toString(),
                         price = 1000 * (index + 1),
                         type = if (index % 2 == 0) PropertyType.RENT else PropertyType.BUY,
-                        imgSrc = "",
+                        imgSrc = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
                     )
                 },
                 selectedProperty = null,
