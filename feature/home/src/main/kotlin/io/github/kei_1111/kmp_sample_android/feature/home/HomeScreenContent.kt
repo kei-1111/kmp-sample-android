@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import io.github.kei_1111.kmp_sample_android.feature.home.component.MarsPropertyCard
+import io.github.kei_1111.kmp_sample_android.feature.home.component.MarsPropertyDetailDialog
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeAction
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
 
@@ -43,7 +44,15 @@ fun HomeScreenContent(
         items(state.marsProperties) { marsProperty ->
             MarsPropertyCard(
                 marsProperty = marsProperty,
+                onClick = { onAction(HomeAction.OnClickMarsPropertyCard(marsProperty)) },
             )
         }
+    }
+
+    if (state.selectedProperty != null) {
+        MarsPropertyDetailDialog(
+            marsProperty = state.selectedProperty!!,
+            onDismiss = { onAction(HomeAction.OnDismissMarsPropertyDetailDialog) },
+        )
     }
 }
