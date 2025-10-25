@@ -54,4 +54,6 @@ dependencies {
     implementation(libs.koin.compose.viewmodel)
 
     implementation(libs.kmp.sample.library.shared)
+
+    debugImplementation(libs.androidx.ui.tooling)
 }
