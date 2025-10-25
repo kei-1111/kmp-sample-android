@@ -24,8 +24,6 @@ includeBuild("libs/kmp-sample-library")
 rootProject.name = "kmp-sample-android"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
-
 include(":core:designsystem")
-
 include(":feature:home")
  
