@@ -41,6 +41,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "kmp-sample-android"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+includeBuild("build-logic")
 include(":app")
 include(":core:designsystem")
 include(":feature:home")
