@@ -18,14 +18,11 @@ import androidx.compose.ui.window.Dialog
 import coil3.compose.AsyncImage
 import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
 import io.github.kei_1111.kmp_sample_android.feature.home.BuildConfig
-import io.github.kei_1111.kmp_sample_library.core.model.MarsProperty
-import io.github.kei_1111.kmp_sample_library.core.model.PropertyType
-import java.text.NumberFormat
-import java.util.Locale
+import io.github.kei_1111.kmp_sample_library.feature.home.model.MarsPropertyUiModel
 
 @Composable
 fun MarsPropertyDetailDialog(
-    marsProperty: MarsProperty,
+    marsProperty: MarsPropertyUiModel,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -39,7 +36,7 @@ fun MarsPropertyDetailDialog(
         ) {
             Column {
                 AsyncImage(
-                    model = marsProperty.imgSrc,
+                    model = marsProperty.imageUrl,
                     contentDescription = null,
                     modifier = Modifier.fillMaxWidth(),
                     contentScale = ContentScale.Fit
@@ -70,8 +67,7 @@ fun MarsPropertyDetailDialog(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                         Text(
-                            text = NumberFormat.getCurrencyInstance(Locale.US)
-                                .format(marsProperty.price),
+                            text = marsProperty.price,
                             style = MaterialTheme.typography.headlineMedium,
                             color = MaterialTheme.colorScheme.primary,
                         )
@@ -84,7 +80,7 @@ fun MarsPropertyDetailDialog(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                         Text(
-                            text = marsProperty.type.name,
+                            text = marsProperty.type,
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurface,
                         )
@@ -100,11 +96,11 @@ fun MarsPropertyDetailDialog(
 private fun MarsPropertyDetailDialogPreview() {
     KmpSampleAndroidTheme {
         MarsPropertyDetailDialog(
-            marsProperty = MarsProperty(
+            marsProperty = MarsPropertyUiModel(
                 id = "424905",
-                price = 450000,
-                type = PropertyType.RENT,
-                imgSrc = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
+                price = "$450,000",
+                type = "RENT",
+                imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
             ),
             onDismiss = {}
         )

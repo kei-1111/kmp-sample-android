@@ -17,10 +17,9 @@ import androidx.compose.ui.unit.dp
 import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
 import io.github.kei_1111.kmp_sample_android.feature.home.component.MarsPropertyCard
 import io.github.kei_1111.kmp_sample_android.feature.home.component.MarsPropertyDetailDialog
-import io.github.kei_1111.kmp_sample_library.core.model.MarsProperty
-import io.github.kei_1111.kmp_sample_library.core.model.PropertyType
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeAction
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
+import io.github.kei_1111.kmp_sample_library.feature.home.model.MarsPropertyUiModel
 
 @Composable
 fun HomeScreenContent(
@@ -58,7 +57,7 @@ fun HomeScreenContent(
 }
 
 private data class HomeScreenContentPreviewParameter(
-    val selectedProperty: MarsProperty?
+    val selectedProperty: MarsPropertyUiModel?
 )
 
 private class HomeScreenContentPPP : CollectionPreviewParameterProvider<HomeScreenContentPreviewParameter> (
@@ -67,11 +66,11 @@ private class HomeScreenContentPPP : CollectionPreviewParameterProvider<HomeScre
             selectedProperty = null,
         ),
         HomeScreenContentPreviewParameter(
-            selectedProperty = MarsProperty(
+            selectedProperty = MarsPropertyUiModel(
                 id = "49005",
-                type = PropertyType.RENT,
-                price = 250000,
-                imgSrc = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
+                type = "RENT",
+                price = "$250,000",
+                imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
             )
         )
     )
@@ -86,11 +85,11 @@ private fun HomeScreenContentPreview(
         HomeScreenContent(
             state = HomeState.Stable(
                 marsProperties = List(10) { index ->
-                    MarsProperty(
+                    MarsPropertyUiModel(
                         id = index.toString(),
-                        price = 1000 * (index + 1),
-                        type = if (index % 2 == 0) PropertyType.RENT else PropertyType.BUY,
-                        imgSrc = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
+                        price = "$${1000 * (index + 1)}",
+                        type = if (index % 2 == 0) "RENT" else "BUY",
+                        imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
                     )
                 },
                 selectedProperty = parameter.selectedProperty,

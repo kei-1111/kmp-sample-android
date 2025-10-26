@@ -1,6 +1,5 @@
 package io.github.kei_1111.kmp_sample_android.feature.home.component
 
-import android.R.attr.contentDescription
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -30,15 +29,13 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
 import io.github.kei_1111.kmp_sample_android.feature.home.BuildConfig
-import io.github.kei_1111.kmp_sample_library.core.model.MarsProperty
-import io.github.kei_1111.kmp_sample_library.core.model.PropertyType
 import java.text.NumberFormat
 import java.util.Locale
-import io.github.kei_1111.kmp_sample_android.feature.home.R
+import io.github.kei_1111.kmp_sample_library.feature.home.model.MarsPropertyUiModel
 
 @Composable
 fun MarsPropertyCard(
-    marsProperty: MarsProperty,
+    marsProperty: MarsPropertyUiModel,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -60,14 +57,14 @@ fun MarsPropertyCard(
                     .aspectRatio(1f)
             ) {
                 AsyncImage(
-                    model = marsProperty.imgSrc,
+                    model = marsProperty.imageUrl,
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
 
                 Text(
-                    text = marsProperty.type.name,
+                    text = marsProperty.type,
                     modifier = Modifier
                         .align(Alignment.TopEnd)
                         .background(
@@ -92,7 +89,7 @@ fun MarsPropertyCard(
                     .padding(vertical = 8.dp),
             ) {
                 Text(
-                    text = NumberFormat.getCurrencyInstance(Locale.US).format(marsProperty.price),
+                    text = marsProperty.price,
                     color = MaterialTheme.colorScheme.onSurface,
                     style = MaterialTheme.typography.labelLarge,
                 )
@@ -106,11 +103,11 @@ fun MarsPropertyCard(
 private fun MarsPropertyCardPreview() {
     KmpSampleAndroidTheme {
         MarsPropertyCard(
-            marsProperty = MarsProperty(
+            marsProperty = MarsPropertyUiModel(
                 id = "424905",
-                price = 450000,
-                type = PropertyType.RENT,
-                imgSrc = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
+                price = "$450,000",
+                type = "RENT",
+                imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
             ),
             onClick = {},
             modifier = Modifier.width(150.dp)

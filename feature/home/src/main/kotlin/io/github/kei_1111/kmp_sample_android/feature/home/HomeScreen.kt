@@ -18,11 +18,10 @@ import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameter
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
 import io.github.kei_1111.kmp_sample_android.feature.home.component.HomeTopBar
-import io.github.kei_1111.kmp_sample_library.core.model.MarsProperty
-import io.github.kei_1111.kmp_sample_library.core.model.PropertyType
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeAction
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeViewModel
+import io.github.kei_1111.kmp_sample_library.feature.home.model.MarsPropertyUiModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -103,11 +102,11 @@ private class HomeScreenPPP : CollectionPreviewParameterProvider<HomeScreenPrevi
         HomeScreenPreviewParameter(
             state = HomeState.Stable(
                 marsProperties = List(10) { index ->
-                    MarsProperty(
+                    MarsPropertyUiModel(
                         id = index.toString(),
-                        price = 1000 * (index + 1),
-                        type = if (index % 2 == 0) PropertyType.RENT else PropertyType.BUY,
-                        imgSrc = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
+                        price = "$${1000 * (index + 1)}",
+                        type = if (index % 2 == 0) "RENT" else "BUY",
+                        imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
                     )
                 },
                 selectedProperty = null,

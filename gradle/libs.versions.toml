@@ -11,7 +11,7 @@ coreKtx = "1.16.0"
 espressoCore = "3.6.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
-kmpSampleLibrary = "1.0-SNAPSHOT"
+kmpSampleLibrary = "1.0.11"
 koin = "4.1.0"
 kotlin = "2.2.0"
 lifecycleRuntimeKtx = "2.9.1"
@@ -35,6 +35,7 @@ coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref 
 coil-network = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kmp-sample-library-shared = { group = "io.github.kei_1111.kmp_sample_library", name = "shared", version.ref = "kmpSampleLibrary" }
+kmp-sample-library-home = { group = "io.github.kei_1111.kmp_sample_library", name = "home", version.ref = "kmpSampleLibrary" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
 koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
