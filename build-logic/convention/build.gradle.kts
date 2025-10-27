@@ -25,6 +25,11 @@ dependencies {
 
 gradlePlugin {
     plugins {
+        register("androidApplication") {
+            id = libs.plugins.kmp.sample.android.android.application.get().pluginId
+            implementationClass = "AndroidApplicationPlugin"
+        }
+
         register("androidLibrary") {
             id = libs.plugins.kmp.sample.android.android.library.get().pluginId
             implementationClass = "AndroidLibraryPlugin"
