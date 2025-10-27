@@ -13,6 +13,7 @@ class ApplicationPlugin : Plugin<Project> {
         with(target) {
             apply(plugin = "com.android.application")
             apply(plugin = "org.jetbrains.kotlin.android")
+            apply(plugin = "org.jetbrains.kotlin.plugin.compose")
 
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
