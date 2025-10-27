@@ -4,4 +4,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
+
+    // kmp-sample-android
+    alias(libs.plugins.kmp.sample.android.android.library) apply false
 }

@@ -22,3 +22,12 @@ dependencies {
     compileOnly(libs.android.gradle)
     compileOnly(libs.kotlin.gradle)
 }
+
+gradlePlugin {
+    plugins {
+        register("androidLibrary") {
+            id = libs.plugins.kmp.sample.android.android.library.get().pluginId
+            implementationClass = "AndroidLibraryPlugin"
+        }
+    }
+}
