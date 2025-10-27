@@ -1,6 +1,8 @@
 import com.android.build.api.dsl.ApplicationExtension
 import io.github.kei_1111.kmp_sample_android.configureAndroidCompose
 import io.github.kei_1111.kmp_sample_android.configureKotlinAndroid
+import io.github.kei_1111.kmp_sample_android.libs
+import io.github.kei_1111.kmp_sample_android.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -15,6 +17,7 @@ class ApplicationPlugin : Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
                 configureAndroidCompose(this)
+                defaultConfig.targetSdk = libs.versions("targetSdk").toInt()
             }
         }
     }
