@@ -31,8 +31,13 @@ gradlePlugin {
         }
 
         register("androidLibrary") {
-            id = libs.plugins.kmp.sample.android.android.library.get().pluginId
+            id = libs.plugins.kmp.sample.android.android.library.asProvider().get().pluginId
             implementationClass = "AndroidLibraryPlugin"
+        }
+
+        register("androidLibraryCompose") {
+            id = libs.plugins.kmp.sample.android.android.library.compose.get().pluginId
+            implementationClass = "AndroidLibraryComposePlugin"
         }
     }
 }

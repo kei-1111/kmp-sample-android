@@ -56,3 +56,4 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 # kmp-sample-android
 kmp-sample-android-android-application = { id = "kmp-sample-android-android-application" }
 kmp-sample-android-android-library = { id = "kmp-sample-android-android-library" }
+kmp-sample-android-android-library-compose = { id = "kmp-sample-android-android-library-compose" }

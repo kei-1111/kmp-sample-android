@@ -8,4 +8,5 @@ plugins {
     // kmp-sample-android
     alias(libs.plugins.kmp.sample.android.android.application) apply false
     alias(libs.plugins.kmp.sample.android.android.library) apply false
+    alias(libs.plugins.kmp.sample.android.android.library.compose) apply false
 }
