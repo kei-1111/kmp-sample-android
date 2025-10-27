@@ -1,5 +1,4 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.CommonExtension
 import io.github.kei_1111.kmp_sample_android.configureAndroidCompose
 import io.github.kei_1111.kmp_sample_android.configureKotlinAndroid
 import org.gradle.api.Plugin
@@ -7,7 +6,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
-class AndroidApplicationPlugin : Plugin<Project> {
+class ApplicationPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             apply(plugin = "com.android.application")

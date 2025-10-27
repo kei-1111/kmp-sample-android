@@ -54,6 +54,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 # kmp-sample-android
-kmp-sample-android-android-application = { id = "kmp-sample-android-android-application" }
-kmp-sample-android-android-library = { id = "kmp-sample-android-android-library" }
-kmp-sample-android-android-library-compose = { id = "kmp-sample-android-android-library-compose" }
+kmp-sample-android-application = { id = "kmp.sample.android.application" }
+kmp-sample-android-feature = { id = "kmp.sample.android.feature" }
+kmp-sample-android-library-compose = { id = "kmp.sample.android.library.compose" }
+kmp-sample-android-library = { id = "kmp.sample.android.library" }

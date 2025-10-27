@@ -25,19 +25,21 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        register("androidApplication") {
-            id = libs.plugins.kmp.sample.android.android.application.get().pluginId
-            implementationClass = "AndroidApplicationPlugin"
+        register("application") {
+            id = libs.plugins.kmp.sample.android.application.get().pluginId
+            implementationClass = "ApplicationPlugin"
         }
-
-        register("androidLibrary") {
-            id = libs.plugins.kmp.sample.android.android.library.asProvider().get().pluginId
-            implementationClass = "AndroidLibraryPlugin"
+        register("library") {
+            id = libs.plugins.kmp.sample.android.library.asProvider().get().pluginId
+            implementationClass = "LibraryPlugin"
         }
-
-        register("androidLibraryCompose") {
-            id = libs.plugins.kmp.sample.android.android.library.compose.get().pluginId
-            implementationClass = "AndroidLibraryComposePlugin"
+        register("libraryCompose") {
+            id = libs.plugins.kmp.sample.android.library.compose.get().pluginId
+            implementationClass = "LibraryComposePlugin"
+        }
+        register("feature") {
+            id = libs.plugins.kmp.sample.android.feature.get().pluginId
+            implementationClass = "FeaturePlugin"
         }
     }
 }
