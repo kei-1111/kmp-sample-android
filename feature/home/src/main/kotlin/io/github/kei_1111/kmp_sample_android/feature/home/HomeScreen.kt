@@ -17,11 +17,13 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
+import io.github.kei_1111.kmp_sample_android.feature.home.component.HomeScreenContent
 import io.github.kei_1111.kmp_sample_android.feature.home.component.HomeTopBar
-import io.github.kei_1111.kmp_sample_library.feature.home.HomeAction
-import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
+import io.github.kei_1111.kmp_sample_library.feature.home.HomeUiAction
+import io.github.kei_1111.kmp_sample_library.feature.home.HomeUiState
 import io.github.kei_1111.kmp_sample_library.feature.home.HomeViewModel
 import io.github.kei_1111.kmp_sample_library.feature.home.model.MarsPropertyUiModel
+import io.github.kei_1111.kmp_sample_library.feature.home.model.PropertyTypeUiModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -39,8 +41,8 @@ fun HomeScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun HomeScreen(
-    state: HomeState,
-    onAction: (HomeAction) -> Unit,
+    state: HomeUiState,
+    onAction: (HomeUiAction) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -58,19 +60,19 @@ private fun HomeScreen(
             contentAlignment = Alignment.Center
         ) {
             when (state) {
-                is HomeState.Init -> {
+                is HomeUiState.Init -> {
                     Text(text = "Welcome to Home Screen",)
                 }
 
-                is HomeState.Loading -> {
+                is HomeUiState.Loading -> {
                     Text(text = "Loading...")
                 }
 
-                is HomeState.Error -> {
+                is HomeUiState.Error -> {
                     Text(text = "Error")
                 }
 
-                is HomeState.Stable -> {
+                is HomeUiState.Stable -> {
                     HomeScreenContent(
                         state = state,
                         onAction = onAction,
@@ -83,29 +85,29 @@ private fun HomeScreen(
 }
 
 private data class HomeScreenPreviewParameter(
-    val state: HomeState,
+    val state: HomeUiState,
 )
 
 private class HomeScreenPPP : CollectionPreviewParameterProvider<HomeScreenPreviewParameter> (
     collection = listOf(
         HomeScreenPreviewParameter(
-            state = HomeState.Init
+            state = HomeUiState.Init
         ),
         HomeScreenPreviewParameter(
-            state = HomeState.Loading
+            state = HomeUiState.Loading
         ),
         HomeScreenPreviewParameter(
-            state = HomeState.Error(
+            state = HomeUiState.Error(
                 message = "Unknown Error"
             )
         ),
         HomeScreenPreviewParameter(
-            state = HomeState.Stable(
+            state = HomeUiState.Stable(
                 marsProperties = List(10) { index ->
                     MarsPropertyUiModel(
                         id = index.toString(),
                         price = "$${1000 * (index + 1)}",
-                        type = if (index % 2 == 0) "RENT" else "BUY",
+                        type = if (index % 2 == 0) PropertyTypeUiModel.BUY else PropertyTypeUiModel.RENT,
                         imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
                     )
                 },

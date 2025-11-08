@@ -1,4 +1,4 @@
-package io.github.kei_1111.kmp_sample_android.feature.home
+package io.github.kei_1111.kmp_sample_android.feature.home.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,16 +15,16 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import io.github.kei_1111.kmp_sample_android.core.designsystem.theme.KmpSampleAndroidTheme
-import io.github.kei_1111.kmp_sample_android.feature.home.component.MarsPropertyCard
-import io.github.kei_1111.kmp_sample_android.feature.home.component.MarsPropertyDetailDialog
-import io.github.kei_1111.kmp_sample_library.feature.home.HomeAction
-import io.github.kei_1111.kmp_sample_library.feature.home.HomeState
+import io.github.kei_1111.kmp_sample_android.feature.home.BuildConfig
+import io.github.kei_1111.kmp_sample_library.feature.home.HomeUiAction
+import io.github.kei_1111.kmp_sample_library.feature.home.HomeUiState
 import io.github.kei_1111.kmp_sample_library.feature.home.model.MarsPropertyUiModel
+import io.github.kei_1111.kmp_sample_library.feature.home.model.PropertyTypeUiModel
 
 @Composable
 fun HomeScreenContent(
-    state: HomeState.Stable,
-    onAction: (HomeAction) -> Unit,
+    state: HomeUiState.Stable,
+    onAction: (HomeUiAction) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val navigationBarHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
@@ -40,35 +40,35 @@ fun HomeScreenContent(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        items(state.marsProperties) { marsProperty ->
+        items(state.marsProperties) { marsPropertyUiModel ->
             MarsPropertyCard(
-                marsProperty = marsProperty,
-                onClick = { onAction(HomeAction.OnClickMarsPropertyCard(marsProperty)) },
+                marsPropertyUiModel = marsPropertyUiModel,
+                onClick = { onAction(HomeUiAction.OnClickMarsPropertyCard(marsPropertyUiModel)) },
             )
         }
     }
 
     if (state.selectedProperty != null) {
         MarsPropertyDetailDialog(
-            marsProperty = state.selectedProperty!!,
-            onDismiss = { onAction(HomeAction.OnDismissMarsPropertyDetailDialog) },
+            marsPropertyUiModel = state.selectedProperty!!,
+            onDismiss = { onAction(HomeUiAction.OnDismissMarsPropertyDetailDialog) },
         )
     }
 }
 
 private data class HomeScreenContentPreviewParameter(
-    val selectedProperty: MarsPropertyUiModel?
+    val selectedPropertyUiModel: MarsPropertyUiModel?
 )
 
 private class HomeScreenContentPPP : CollectionPreviewParameterProvider<HomeScreenContentPreviewParameter> (
     collection = listOf(
         HomeScreenContentPreviewParameter(
-            selectedProperty = null,
+            selectedPropertyUiModel = null,
         ),
         HomeScreenContentPreviewParameter(
-            selectedProperty = MarsPropertyUiModel(
+            selectedPropertyUiModel = MarsPropertyUiModel(
                 id = "49005",
-                type = "RENT",
+                type = PropertyTypeUiModel.BUY,
                 price = "$250,000",
                 imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
             )
@@ -83,16 +83,16 @@ private fun HomeScreenContentPreview(
 ) {
     KmpSampleAndroidTheme {
         HomeScreenContent(
-            state = HomeState.Stable(
+            state = HomeUiState.Stable(
                 marsProperties = List(10) { index ->
                     MarsPropertyUiModel(
                         id = index.toString(),
                         price = "$${1000 * (index + 1)}",
-                        type = if (index % 2 == 0) "RENT" else "BUY",
+                        type = if (index % 2 == 0) PropertyTypeUiModel.BUY else PropertyTypeUiModel.RENT,
                         imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
                     )
                 },
-                selectedProperty = parameter.selectedProperty,
+                selectedProperty = parameter.selectedPropertyUiModel,
             ),
             onAction = {},
         )
