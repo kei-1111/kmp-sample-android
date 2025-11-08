@@ -103,7 +103,7 @@ private class HomeScreenPPP : CollectionPreviewParameterProvider<HomeScreenPrevi
         ),
         HomeScreenPreviewParameter(
             state = HomeUiState.Stable(
-                marsProperties = List(10) { index ->
+                marsPropertyUiModels = List(10) { index ->
                     MarsPropertyUiModel(
                         id = index.toString(),
                         price = "$${1000 * (index + 1)}",
@@ -111,7 +111,7 @@ private class HomeScreenPPP : CollectionPreviewParameterProvider<HomeScreenPrevi
                         imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
                     )
                 },
-                selectedProperty = null,
+                selectedPropertyUiModel = null,
             ),
         )
     )

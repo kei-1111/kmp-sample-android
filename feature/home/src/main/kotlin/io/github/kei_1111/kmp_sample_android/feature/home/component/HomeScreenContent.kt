@@ -40,7 +40,7 @@ fun HomeScreenContent(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        items(state.marsProperties) { marsPropertyUiModel ->
+        items(state.marsPropertyUiModels) { marsPropertyUiModel ->
             MarsPropertyCard(
                 marsPropertyUiModel = marsPropertyUiModel,
                 onClick = { onAction(HomeUiAction.OnClickMarsPropertyCard(marsPropertyUiModel)) },
@@ -48,9 +48,9 @@ fun HomeScreenContent(
         }
     }
 
-    if (state.selectedProperty != null) {
+    if (state.selectedPropertyUiModel != null) {
         MarsPropertyDetailDialog(
-            marsPropertyUiModel = state.selectedProperty!!,
+            marsPropertyUiModel = state.selectedPropertyUiModel!!,
             onDismiss = { onAction(HomeUiAction.OnDismissMarsPropertyDetailDialog) },
         )
     }
@@ -84,7 +84,7 @@ private fun HomeScreenContentPreview(
     KmpSampleAndroidTheme {
         HomeScreenContent(
             state = HomeUiState.Stable(
-                marsProperties = List(10) { index ->
+                marsPropertyUiModels = List(10) { index ->
                     MarsPropertyUiModel(
                         id = index.toString(),
                         price = "$${1000 * (index + 1)}",
@@ -92,7 +92,7 @@ private fun HomeScreenContentPreview(
                         imageUrl = "${BuildConfig.DRAWABLE_PATH}/img_mars_preview.jpg",
                     )
                 },
-                selectedProperty = parameter.selectedPropertyUiModel,
+                selectedPropertyUiModel = parameter.selectedPropertyUiModel,
             ),
             onAction = {},
         )
